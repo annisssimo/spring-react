@@ -1,28 +1,35 @@
+import styles from './Header.module.css';
+import logo from '../../assets/images/logo.png';
+import toggle from '../../assets/images/toggle.png';
+import { menuItems } from '../../data/menuItems';
+
 function Header() {
   return (
-    <header className="header">
-      <div className="header__container container">
-        <img
-          src="./images/logo.png"
-          alt="Spring Logo"
-          className="header__logo"
-        />
-        <nav className="mobile-menu">
-          <ul className="mobile-menu__list" id="mobile-menu"></ul>
+    <header className={styles.header}>
+      <div className={`${styles.headerContainer} container`}>
+        <img src={logo} alt="Spring Logo" className={styles.headerLogo} />
+        <nav className={styles.mobileMenu}>
+          <ul className={styles.mobileMenuList} id="mobile-menu"></ul>
         </nav>
-        <div className="hamburger" role="button" tabindex="0">
-          <div className="hamburger__line"></div>
-          <div className="hamburger__line"></div>
-          <div className="hamburger__line"></div>
+        <div className={styles.hamburger} role="button" tabIndex="0">
+          <div className={styles.hamburgerLine}></div>
+          <div className={styles.hamburgerLine}></div>
+          <div className={styles.hamburgerLine}></div>
         </div>
-        <div className="header__right-section">
-          <nav className="header__nav">
-            <ul className="header__menu" id="menu"></ul>
+        <div className={styles.headerRightSection}>
+          <nav className={styles.headerNav}>
+            <ul className={styles.headerMenu} id="menu">
+              {menuItems.map((item) => (
+                <li className={styles.headerMenuItem}>
+                  <a href="#">{item.title}</a>
+                </li>
+              ))}
+            </ul>
           </nav>
           <img
-            src="./images/toggle.png"
+            src={toggle}
             alt="Toggle"
-            className="header__toggle"
+            className={styles.headerToggle}
             draggable="false"
           />
         </div>

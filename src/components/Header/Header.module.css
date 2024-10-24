@@ -1,0 +1,107 @@
+.header {
+  padding: 13px 0;
+  border-bottom: 1px solid var(--light-blue);
+  min-height: 3.25rem;
+}
+
+.headerContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.headerLogo {
+  width: 300px;
+}
+
+.headerRightSection {
+  display: flex;
+  align-items: center;
+}
+
+.headerMenu {
+  display: flex;
+  list-style: none;
+}
+
+.headerMenuItem {
+  position: relative;
+  padding: 0.5rem 2rem 0.5rem 0;
+  font-family: 'Metropolis', sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.headerMenuItem::after {
+  display: inline-block;
+  content: ' ';
+  transform: rotate(-45deg);
+  border-bottom: 2px solid var(--black);
+  border-left: 2px solid var(--black);
+  border-radius: 1px;
+  height: 6px;
+  width: 6px;
+  position: relative;
+  bottom: 3px;
+  left: 4px;
+}
+
+.headerMenuItem a {
+  text-decoration: none;
+  color: var(--black);
+}
+
+.headerSubmenu {
+  display: block;
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  top: calc(100% + 16px);
+  left: -10px;
+  background: var(--white);
+  border: 0;
+  box-shadow: 0 5px 30px 0 #6c878780;
+  font-family: Open Sans, sans-serif;
+  font-size: 1rem;
+  padding: 1rem;
+  border-radius: 6px;
+  transform: translateY(0);
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+
+.headerSubmenu li {
+  padding: 0.375rem 3rem 0.375rem 1rem;
+  list-style-type: none;
+}
+
+.headerSubmenuItem {
+  text-decoration: none;
+  color: var(--black);
+  font-weight: 300;
+  font-size: 1rem;
+  white-space: nowrap;
+  transition: 0.1s;
+}
+
+.headerSubmenuItem:hover {
+  color: var(--submenu-item-hover);
+}
+
+.headerSubmenu .isLink {
+  color: #086dc3;
+}
+
+.headerSubmenu div.navbarItem {
+  font-size: 0.8rem;
+  font-weight: 300;
+}
+
+.headerMenuItem:hover .headerSubmenu,
+.headerMenuItem .headerSubmenu:hover {
+  opacity: 1;
+  visibility: visible;
+}
+
+.headerToggle {
+  width: 38px;
+}
