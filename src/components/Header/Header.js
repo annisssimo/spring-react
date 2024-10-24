@@ -20,9 +20,21 @@ function Header() {
           <nav className={styles.headerNav}>
             <ul className={styles.headerMenu} id="menu">
               {menuItems.map((item) => (
-                <li className={styles.headerMenuItem}>
-                  <a href="#">{item.title}</a>
-                </li>
+                <div className={styles.headerMenuItem}>
+                  <span>{item.title}</span>
+                  <ul className={styles.headerSubmenu}>
+                    {item.submenu.map((subItem) => (
+                      <li>
+                        <a
+                          className={styles.headerSubmenuItem}
+                          href={subItem.href}
+                        >
+                          {subItem.title}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               ))}
             </ul>
           </nav>

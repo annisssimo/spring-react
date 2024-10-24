@@ -46,7 +46,7 @@
   left: 4px;
 }
 
-.headerMenuItem a {
+.headerMenuItem span {
   text-decoration: none;
   color: var(--black);
 }
