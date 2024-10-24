@@ -1,4 +1,5 @@
 import styles from './IntroSection.module.css';
+import Button from '../Button/Button';
 
 function IntroSection() {
   return (
@@ -11,7 +12,7 @@ function IntroSection() {
           Project to help you build it. Start small and use just what you
           need—Spring is modular by design.
         </p>
-        <button className={styles.introButton}>Release Calendar</button>
+        <Button innerButtonText="Release Calendar" />
       </div>
     </section>
   );

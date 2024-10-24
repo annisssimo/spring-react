@@ -1,0 +1,39 @@
+.introButton {
+  background: transparent;
+  border: 2px solid var(--black);
+  border-radius: 0;
+  color: var(--black);
+  display: inline-block;
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 700;
+  line-height: 20px;
+  padding: 15px 30px;
+  margin-top: 16px;
+  position: relative;
+  text-transform: uppercase;
+  transition: color 0.2s ease-in-out;
+  z-index: 1;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.introButton::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background-color: var(--black);
+  z-index: -1;
+  transition: left 0.2s ease-in-out;
+}
+
+.introButton:hover::before {
+  left: 0;
+}
+
+.introButton:hover {
+  color: var(--white);
+}
