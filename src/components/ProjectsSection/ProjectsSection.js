@@ -1,5 +1,4 @@
-import { useState, useCallback, useEffect } from 'react';
-
+import { useState, useEffect, useCallback } from 'react';
 import styles from './ProjectsSection.module.css';
 import { projects } from '../../data/projects';
 
@@ -7,12 +6,7 @@ function ProjectsSection() {
   const [searchQuery, setSearchQuery] = useState('');
   const [filteredObjects, setFilteredObjects] = useState(projects);
 
-  useEffect(() => {
-    const timer = setTimeout(() => filterProjects(), 300);
-    return () => clearTimeout(timer);
-  }, [searchQuery]);
-
-  function filterProjects() {
+  const filterProjects = useCallback(() => {
     const query = searchQuery.toLowerCase();
     setFilteredObjects(
       projects.filter(
@@ -21,7 +15,12 @@ function ProjectsSection() {
           proj.description.toLowerCase().includes(query)
       )
     );
-  }
+  }, [searchQuery]);
+
+  useEffect(() => {
+    const timer = setTimeout(() => filterProjects(), 300);
+    return () => clearTimeout(timer);
+  }, [searchQuery, filterProjects]);
 
   function handleInput(event) {
     setSearchQuery(event.target.value);
