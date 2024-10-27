@@ -1,6 +1,7 @@
 import './App.css';
 import Header from './components/Header/Header';
 import IntroSection from './components/IntroSection/IntroSection';
+import ProjectsSection from './components/ProjectsSection/ProjectsSection';
 
 function App() {
   return (
@@ -8,7 +9,7 @@ function App() {
       <Header />
       <main>
         <IntroSection />
-        {/* <Projects /> */}
+        <ProjectsSection />
       </main>
     </div>
   );

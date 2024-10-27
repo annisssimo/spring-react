@@ -20,11 +20,11 @@ function Header() {
           <nav className={styles.headerNav}>
             <ul className={styles.headerMenu} id="menu">
               {menuItems.map((item) => (
-                <div className={styles.headerMenuItem}>
+                <div key={item.title} className={styles.headerMenuItem}>
                   <span>{item.title}</span>
                   <ul className={styles.headerSubmenu}>
                     {item.submenu.map((subItem) => (
-                      <li>
+                      <li key={subItem.title}>
                         <a
                           className={styles.headerSubmenuItem}
                           href={subItem.href}
