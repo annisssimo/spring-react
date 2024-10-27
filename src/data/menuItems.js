@@ -40,7 +40,7 @@ export const menuItems = [
       { title: 'View all projects', href: '/projects' },
       { title: 'DEVELOPMENT TOOLS', href: '#' },
       { title: 'Spring Tools 4', href: '/tools' },
-      { title: 'Spring Initializer', href: 'https://start.spring.io/' },
+      { title: 'Spring Initializr', href: 'https://start.spring.io/' },
     ],
   },
   {

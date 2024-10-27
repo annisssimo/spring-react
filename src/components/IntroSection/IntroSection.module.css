@@ -15,3 +15,9 @@
   margin-top: 5px;
   max-width: 960px;
 }
+
+@media (max-width: 1080px) {
+  .introDescription {
+    font-size: 1.3rem;
+  }
+}

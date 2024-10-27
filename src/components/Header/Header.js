@@ -2,6 +2,7 @@ import styles from './Header.module.css';
 import logo from '../../assets/images/logo.png';
 import toggle from '../../assets/images/toggle.png';
 import { menuItems } from '../../data/menuItems';
+import MobileMenu from '../MobileMenu/MobileMenu';
 
 function Header() {
   return (
@@ -11,11 +12,7 @@ function Header() {
         <nav className={styles.mobileMenu}>
           <ul className={styles.mobileMenuList} id="mobile-menu"></ul>
         </nav>
-        <div className={styles.hamburger} role="button" tabIndex="0">
-          <div className={styles.hamburgerLine}></div>
-          <div className={styles.hamburgerLine}></div>
-          <div className={styles.hamburgerLine}></div>
-        </div>
+        <MobileMenu />
         <div className={styles.headerRightSection}>
           <nav className={styles.headerNav}>
             <ul className={styles.headerMenu} id="menu">

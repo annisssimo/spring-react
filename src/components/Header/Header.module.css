@@ -105,3 +105,34 @@
 .headerToggle {
   width: 38px;
 }
+
+@media (max-width: 1080px) {
+  .header {
+    padding: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--white);
+    z-index: 1000;
+  }
+
+  .headerContainer {
+    margin: 0 12px;
+    width: calc(100% - 16px);
+  }
+
+  .headerRightSection {
+    display: none;
+  }
+
+  .headerLogo {
+    width: 200px;
+    position: relative;
+    top: 2.5px;
+  }
+
+  .hamburger {
+    display: block;
+  }
+}
