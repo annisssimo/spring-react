@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { menuItems } from '../../data/menuItems.js';
 import styles from './MobileMenu.module.css';
+import HamburgerIcon from '../HamburgerIcon/HamburgerIcon.js';
+import MobileMenuItem from '../MobileMenuItem/MobileMenuItem.js';
 
 const MobileMenu = () => {
   const [activeMenuItem, setActiveMenuItem] = useState(null);
@@ -16,19 +18,7 @@ const MobileMenu = () => {
 
   return (
     <>
-      <div
-        className={`${styles.hamburger} ${
-          menuOpen ? styles.hamburgerActive : ''
-        }`}
-        role="button"
-        tabIndex="0"
-        onClick={handleToggleMenu}
-        onKeyDown={(e) => e.key === 'Enter' && handleToggleMenu()}
-      >
-        <div className={styles.hamburgerLine}></div>
-        <div className={styles.hamburgerLine}></div>
-        <div className={styles.hamburgerLine}></div>
-      </div>
+      <HamburgerIcon isOpen={menuOpen} onClick={handleToggleMenu} />
       <nav
         className={`${styles.mobileMenu} ${
           menuOpen ? styles.mobileMenuActive : ''
@@ -36,35 +26,12 @@ const MobileMenu = () => {
       >
         <ul>
           {menuItems.map((item, index) => (
-            <li
+            <MobileMenuItem
               key={index}
-              className={`${styles.mobileMenuItem} ${
-                activeMenuItem === index ? styles.mobileMenuItemActive : ''
-              }`}
-            >
-              <span
-                className={styles.mobileMenuTitle}
-                onClick={() => handleToggleSubmenu(index)}
-              >
-                {item.title}
-              </span>
-              <span
-                className={styles.menuItemIndicator}
-                onClick={() => handleToggleSubmenu(index)}
-                role="button"
-              ></span>
-              <ul
-                className={`${styles.submenu} ${
-                  activeMenuItem === index ? styles.submenuActive : ''
-                }`}
-              >
-                {item.submenu.map((subItem, subIndex) => (
-                  <li key={subIndex} className={styles.submenuItem}>
-                    <a href={subItem.link}>{subItem.title}</a>
-                  </li>
-                ))}
-              </ul>
-            </li>
+              item={item}
+              isActive={activeMenuItem === index}
+              onToggle={() => handleToggleSubmenu(index)}
+            />
           ))}
         </ul>
       </nav>
