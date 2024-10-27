@@ -1,0 +1,98 @@
+.projectCard {
+  display: flex;
+  background: var(--white);
+  border: 1px solid #d9e9e9;
+  border-radius: 5px;
+  height: 194.812px;
+  padding: 34px 16px;
+  padding-bottom: 3rem;
+  transition: all 0.2s;
+  word-wrap: break-word;
+}
+
+.projectCard:hover {
+  box-shadow: 0 10px 20px 0 #6c878733;
+  text-decoration: none;
+  top: -3px;
+  transform: translateY(-3px);
+  cursor: pointer;
+}
+
+.projectCard .projectCardImage {
+  min-width: 120px;
+  padding-right: 20px;
+  margin-right: 20px;
+  position: relative;
+  top: 5px;
+  left: 3px;
+}
+
+.projectCardImage img {
+  height: 120px;
+  max-width: 120px;
+  display: block;
+  width: 117.1px;
+}
+
+.projectsTitle {
+  font-family: 'Metropolis', sans-serif;
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+@media (max-width: 1215px) {
+  .projectCard {
+    width: 372px;
+    height: 276.422px;
+    padding: 30px 20px;
+    align-items: center;
+  }
+
+  .projectCard .image {
+    min-width: 120px;
+    margin-right: 0px;
+  }
+
+  .projectCardImage img {
+    height: 120px;
+    max-width: 100px;
+    display: block;
+  }
+}
+
+@media (max-width: 1024px) {
+  .projectCard {
+    width: 345.594px;
+    height: 334.812px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .projectCard .projectCardImage {
+    min-width: 120px;
+    margin-bottom: 20px;
+    margin-right: 0px;
+  }
+
+  .projectCardImage img {
+    height: 120px;
+    max-width: 120px;
+    display: block;
+  }
+}
+
+@media (max-width: 800px) {
+  .projectCard {
+    width: 90%;
+    margin: 0 auto;
+    height: 307.609px;
+  }
+}
+
+@media (max-width: 500px) {
+  .projectCard {
+    width: 100%;
+    padding: 20px 10px;
+  }
+}

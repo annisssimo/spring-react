@@ -1,6 +1,8 @@
 import { useState, useEffect, useCallback } from 'react';
 import styles from './ProjectsSection.module.css';
 import { projects } from '../../data/projects';
+import ProjectCard from '../ProjectCard/ProjectCard';
+import SearchInput from '../SearchInput/SearchInput';
 
 function ProjectsSection() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -22,33 +24,13 @@ function ProjectsSection() {
     return () => clearTimeout(timer);
   }, [searchQuery, filterProjects]);
 
-  function handleInput(event) {
-    setSearchQuery(event.target.value);
-  }
-
   return (
     <section className={styles.projects}>
-      <div className={styles.inputSearch}>
-        <label htmlFor="projectSearch">Type to search</label>
-        <input
-          id="projectSearch"
-          className={styles.projectSearch}
-          type="search"
-          onChange={handleInput}
-        />
-      </div>
+      <SearchInput onSearch={setSearchQuery} />
       <div className={styles.projectsContainer}>
         {filteredObjects.length === 0 && <div id="no-results">No results</div>}
         {filteredObjects.map((proj) => (
-          <div key={proj.title} className={styles.projectsCard}>
-            <div className={styles.projectCardImage}>
-              <img src={proj.image} alt={proj.title} />
-            </div>
-            <div className={styles.projectsInfo}>
-              <h3 className={styles.projectsTitle}>{proj.title}</h3>
-              <p className={styles.projectsDescription}>{proj.description}</p>
-            </div>
-          </div>
+          <ProjectCard key={proj.title} project={proj} />
         ))}
       </div>
     </section>

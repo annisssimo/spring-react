@@ -1,0 +1,22 @@
+.projectSearch {
+  width: 400px;
+  padding: 0.5rem 1rem;
+  border-radius: 2px;
+  border: none;
+  margin-left: 1rem;
+  outline-color: #6cb52d;
+  border: 1px solid #d9e9e9;
+}
+
+@media (max-width: 590px) {
+  .projectSearch {
+    display: block;
+    margin: 0;
+  }
+}
+
+@media (max-width: 430px) {
+  .projectSearch {
+    width: 200px;
+  }
+}
