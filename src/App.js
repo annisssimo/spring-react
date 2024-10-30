@@ -1,17 +1,13 @@
-import './App.css';
-import Header from './components/Header/Header';
-import IntroSection from './components/IntroSection/IntroSection';
-import ProjectsSection from './components/ProjectsSection/ProjectsSection';
+import { Route, Routes } from 'react-router-dom';
+import Projects from './pages/Projects/Projects';
+import Login from './pages/Login/Login';
 
 function App() {
   return (
-    <div>
-      <Header />
-      <main>
-        <IntroSection />
-        <ProjectsSection />
-      </main>
-    </div>
+    <Routes>
+      <Route path="/" element={<Projects />} />
+      <Route path="/login" element={<Login />} />
+    </Routes>
   );
 }
 
