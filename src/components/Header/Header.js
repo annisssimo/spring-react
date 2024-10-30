@@ -9,9 +9,6 @@ function Header() {
     <header className={styles.header}>
       <div className={`${styles.headerContainer} container`}>
         <HeaderLogo />
-        <nav className={styles.mobileMenu}>
-          <ul className={styles.mobileMenuList} id="mobile-menu"></ul>
-        </nav>
         <MobileMenu />
         <div className={styles.headerRightSection}>
           <HeaderNav />
