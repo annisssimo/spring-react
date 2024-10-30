@@ -1,0 +1,15 @@
+.inputContainer label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 0.5rem;
+}
+
+.inputContainer input {
+  padding: 5px 12px;
+  margin: 4px 0 16px;
+  display: block;
+  width: 100%;
+  border: 1px solid #d1d9e0;
+  border-radius: 6px;
+  box-shadow: inset 0px 1px 0px 0px #1f23280a;
+}
