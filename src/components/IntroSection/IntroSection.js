@@ -12,7 +12,7 @@ function IntroSection() {
           Project to help you build it. Start small and use just what you
           need—Spring is modular by design.
         </p>
-        <Button innerButtonText="Release Calendar" />
+        <Button>Release Calendar</Button>
       </div>
     </section>
   );
