@@ -61,17 +61,25 @@
   color: var(--submenu-item-hover);
 }
 
-.headerSubmenu .isLink {
-  color: #086dc3;
-}
-
-.headerSubmenu div.navbarItem {
-  font-size: 0.8rem;
-  font-weight: 300;
-}
-
 .headerMenuItem:hover .headerSubmenu,
 .headerMenuItem .headerSubmenu:hover {
   opacity: 1;
   visibility: visible;
+}
+
+.headerSubmenu .isLink {
+  color: #086dc3;
+}
+
+.devtools {
+  font-size: 0.8rem;
+  font-weight: 300;
+  margin-top: 24px;
+}
+
+.navbarIcon {
+  width: 16px;
+  height: 16px;
+  margin-left: 8px;
+  vertical-align: -2px;
 }

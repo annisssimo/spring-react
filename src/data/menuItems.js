@@ -38,7 +38,7 @@ export const menuItems = [
       { title: 'Spring Security', href: '/projects/spring-security' },
       { title: 'Spring AI', href: '/projects/spring-ai' },
       { title: 'View all projects', href: '/projects' },
-      { title: 'DEVELOPMENT TOOLS', href: '#' },
+      { title: 'DEVELOPMENT TOOLS' },
       { title: 'Spring Tools 4', href: '/tools' },
       { title: 'Spring Initializr', href: 'https://start.spring.io/' },
     ],
