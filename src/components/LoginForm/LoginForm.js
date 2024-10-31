@@ -15,7 +15,10 @@ function LoginForm() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    if (username === 'admin' && password === '1234') {
+    if (
+      username === process.env.REACT_APP_ADMIN_USERNAME &&
+      password === process.env.REACT_APP_ADMIN_PASSWORD
+    ) {
       dispatch(login());
       navigate('/');
     } else {
