@@ -48,38 +48,8 @@
   list-style-type: none;
 }
 
-.headerSubmenuItem {
-  text-decoration: none;
-  color: var(--black);
-  font-weight: 300;
-  font-size: 1rem;
-  white-space: nowrap;
-  transition: 0.1s;
-}
-
-.headerSubmenuItem:hover {
-  color: var(--submenu-item-hover);
-}
-
 .headerMenuItem:hover .headerSubmenu,
 .headerMenuItem .headerSubmenu:hover {
   opacity: 1;
   visibility: visible;
-}
-
-.headerSubmenu .isLink {
-  color: #086dc3;
-}
-
-.devtools {
-  font-size: 0.8rem;
-  font-weight: 300;
-  margin-top: 24px;
-}
-
-.navbarIcon {
-  width: 16px;
-  height: 16px;
-  margin-left: 8px;
-  vertical-align: -2px;
 }
