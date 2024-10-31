@@ -8,32 +8,22 @@ import Projects from './pages/Projects/Projects';
 import Login from './pages/Login/Login';
 import store from './store/store';
 
-function App() {
-  const router = createBrowserRouter([
-    {
-      element: <Projects />,
-      path: '/',
-      loader: async () => {
-        const { isAuthenticated } = store.getState().user;
-        if (!isAuthenticated) {
-          return redirect('/login');
-        }
-        return null;
-      },
-    },
-    {
-      element: <Login />,
-      path: '/login',
-      loader: async () => {
-        const { isAuthenticated } = store.getState().user;
-        if (isAuthenticated) {
-          return redirect('/');
-        }
-        return null;
-      },
-    },
-  ]);
+const router = createBrowserRouter([
+  {
+    element: <Projects />,
+    path: '/',
+    loader: () =>
+      store.getState().user.isAuthenticated ? null : redirect('/login'),
+  },
+  {
+    element: <Login />,
+    path: '/login',
+    loader: () =>
+      store.getState().user.isAuthenticated ? redirect('/') : null,
+  },
+]);
 
+function App() {
   return <RouterProvider router={router} />;
 }
 
