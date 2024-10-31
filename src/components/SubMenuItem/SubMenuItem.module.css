@@ -20,3 +20,10 @@
 .isLink {
   color: #086dc3;
 }
+
+.navbarIcon {
+  width: 16px;
+  height: 16px;
+  margin-left: 8px;
+  vertical-align: -2px;
+}

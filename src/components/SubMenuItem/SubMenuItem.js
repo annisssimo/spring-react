@@ -1,5 +1,5 @@
 import styles from './SubMenuItem.module.css';
-import Icon from '../Icon/Icon';
+import { ReactComponent as Icon } from '../../assets/images/icon.svg';
 
 function SubMenuItem({ subItem }) {
   return (
@@ -15,7 +15,7 @@ function SubMenuItem({ subItem }) {
             }`}
           >
             {subItem.title}
-            {subItem.hasIcon && <Icon />}
+            {subItem.hasIcon && <Icon className={styles.navbarIcon} />}
           </a>
         </li>
       )}
