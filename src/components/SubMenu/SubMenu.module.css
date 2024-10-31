@@ -1,0 +1,22 @@
+.submenu {
+  display: none;
+  list-style: none;
+  box-sizing: inherit;
+}
+
+.submenuActive {
+  display: block;
+}
+
+.submenuItem a {
+  font-size: 1rem;
+  color: var(--mobile-menu-grey);
+  text-decoration: none;
+  padding: 3.2px 0;
+  font-size: 1.2rem;
+  display: block;
+}
+
+.submenuItem a:hover {
+  color: #9fc937;
+}

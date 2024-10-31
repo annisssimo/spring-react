@@ -1,0 +1,35 @@
+.mobileMenuItem {
+  color: var(--white);
+  cursor: pointer;
+  position: relative;
+  font-weight: 400;
+  list-style-type: none;
+}
+
+.mobileMenuTitle {
+  display: block;
+  border-bottom: 1px solid #ffffff66;
+  margin: 1rem 0;
+  font-size: 2rem;
+  height: 60px;
+}
+
+.menuItemIndicator {
+  position: absolute;
+  right: 10px;
+  top: 20px;
+  width: 15px;
+  height: 15px;
+  border: solid var(--mobile-menu-grey);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+  transition: transform 0.2s ease-out;
+}
+
+.mobileMenuItemActive .menuItemIndicator {
+  transform: rotate(45deg) translate(5px, 10px) scale(-1);
+}
+
+.mobileMenuItem:hover {
+  color: var(--submenu-item-hover);
+}

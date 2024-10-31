@@ -1,0 +1,43 @@
+.header {
+  padding: 13px 0;
+  border-bottom: 1px solid var(--light-blue);
+  min-height: 3.25rem;
+}
+
+.headerContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.headerRightSection {
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 1080px) {
+  .header {
+    padding: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--white);
+    z-index: 1000;
+  }
+
+  .headerContainer {
+    margin: 0 12px;
+    width: calc(100% - 16px);
+  }
+
+  .headerRightSection {
+    display: none;
+  }
+
+  .headerLogo {
+    width: 200px;
+    position: relative;
+    top: 2.5px;
+  }
+}

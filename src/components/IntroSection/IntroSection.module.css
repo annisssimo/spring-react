@@ -1,0 +1,23 @@
+.intro {
+  padding: 76px 0 48px 0;
+}
+
+.introTitle {
+  font-family: 'Metropolis', sans-serif;
+  font-weight: 700;
+  font-size: 3.5em;
+}
+
+.introDescription {
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 2.2rem;
+  margin-top: 5px;
+  max-width: 960px;
+}
+
+@media (max-width: 1080px) {
+  .introDescription {
+    font-size: 1.3rem;
+  }
+}

@@ -1,0 +1,22 @@
+.projects {
+  padding: 60px 0;
+  background-color: var(--light-blue);
+  line-height: 1.7rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.projectsContainer {
+  max-width: 1084.796px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 800px) {
+  .projectsContainer {
+    grid-template-columns: 1fr;
+  }
+}
