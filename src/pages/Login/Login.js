@@ -6,7 +6,6 @@ function Login() {
     <div className={styles.main}>
       <div className={styles.authFormContainer}>
         <h1>Log in to Spring</h1>
-
         <LoginForm />
       </div>
     </div>

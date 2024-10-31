@@ -4,16 +4,3 @@
   padding: 1rem;
   border: max(1px, 0.0625rem) solid #d1d9e0b3;
 }
-
-.submitButton {
-  margin-top: 1rem;
-  width: 100%;
-  display: block;
-  background-color: #06a206;
-  border: 1px solid #1f232826;
-  box-shadow: 0px 1px 0px 0px #1f23280a;
-  cursor: pointer;
-  border-radius: 6px;
-  padding: 5px 12px;
-  color: var(--white);
-}

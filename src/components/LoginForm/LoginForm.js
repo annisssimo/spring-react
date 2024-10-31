@@ -1,5 +1,6 @@
 import styles from './LoginForm.module.css';
 import InputField from '../InputField/InputField';
+import Button from '../Button/Button';
 
 function LoginForm() {
   return (
@@ -7,9 +8,9 @@ function LoginForm() {
       <InputField>Username</InputField>
       <InputField>Password</InputField>
 
-      <button className={styles.submitButton} type="submit">
+      <Button type="submit" buttonStyle="submitButton">
         Log In
-      </button>
+      </Button>
     </form>
   );
 }
