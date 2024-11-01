@@ -18,8 +18,6 @@ const router = createBrowserRouter([
   {
     element: <Login />,
     path: '/login',
-    loader: () =>
-      store.getState().user.isAuthenticated ? redirect('/') : null,
   },
 ]);
 

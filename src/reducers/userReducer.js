@@ -1,4 +1,4 @@
-import { LOGIN, LOGOUT } from '../constants/userActionTypes';
+import { LOGIN } from '../constants/userActionTypes';
 
 const initialState = {
   isAuthenticated: false,
@@ -10,11 +10,6 @@ const userReducer = (state = initialState, action) => {
       return {
         ...state,
         isAuthenticated: true,
-      };
-    case LOGOUT:
-      return {
-        ...state,
-        isAuthenticated: false,
       };
     default:
       return state;
