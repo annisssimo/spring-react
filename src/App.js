@@ -1,18 +1,28 @@
-import './App.css';
-import Header from './components/Header/Header';
-import IntroSection from './components/IntroSection/IntroSection';
-import ProjectsSection from './components/ProjectsSection/ProjectsSection';
+import {
+  createBrowserRouter,
+  redirect,
+  RouterProvider,
+} from 'react-router-dom';
+
+import Projects from './pages/Projects/Projects';
+import Login from './pages/Login/Login';
+import store from './store/store';
+
+const router = createBrowserRouter([
+  {
+    element: <Projects />,
+    path: '/',
+    loader: () =>
+      store.getState().user.isAuthenticated ? null : redirect('/login'),
+  },
+  {
+    element: <Login />,
+    path: '/login',
+  },
+]);
 
 function App() {
-  return (
-    <div>
-      <Header />
-      <main>
-        <IntroSection />
-        <ProjectsSection />
-      </main>
-    </div>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;
