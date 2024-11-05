@@ -28,12 +28,14 @@ function LoginForm() {
 
   return (
     <form className={styles.authFormBody} onSubmit={handleSubmit}>
-      <InputField onChange={(e) => setUsername(e.target.value)}>
-        Username
-      </InputField>
-      <InputField onChange={(e) => setPassword(e.target.value)}>
-        Password
-      </InputField>
+      <InputField
+        label="Username"
+        onChange={(e) => setUsername(e.target.value)}
+      />
+      <InputField
+        label="Password"
+        onChange={(e) => setPassword(e.target.value)}
+      />
 
       <Button type="submit" buttonStyle="submitButton">
         Log In

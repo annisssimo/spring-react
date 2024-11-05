@@ -1,10 +1,10 @@
 import styles from './InputField.module.css';
 
-function InputField({ children, onChange }) {
+function InputField({ label, onChange }) {
   return (
     <div className={styles.inputContainer}>
-      <label htmlFor={children}>{children}</label>
-      <input onChange={onChange} id={children} />
+      <label htmlFor={label}>{label}</label>
+      <input onChange={onChange} id={label} />
     </div>
   );
 }
