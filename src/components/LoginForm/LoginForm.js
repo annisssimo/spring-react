@@ -13,16 +13,29 @@ function LoginForm() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
-    if (
-      username === process.env.REACT_APP_ADMIN_USERNAME &&
-      password === process.env.REACT_APP_ADMIN_PASSWORD
-    ) {
-      dispatch(login());
-      navigate('/');
-    } else {
-      alert('Error');
+    const url = 'http://localhost:3441/login';
+
+    try {
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password }),
+      });
+
+      if (response.ok) {
+        const json = await response.json();
+        if (json.isAuthenticated) {
+          dispatch(login());
+          navigate('/');
+        }
+      } else {
+        alert('Invalid credentials');
+      }
+    } catch (err) {
+      console.error(err);
+      alert('Error Log In');
     }
   }
 
