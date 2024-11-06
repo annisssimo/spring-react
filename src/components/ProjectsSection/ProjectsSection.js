@@ -8,15 +8,20 @@ function ProjectsSection() {
   const [searchQuery, setSearchQuery] = useState('');
   const [filteredObjects, setFilteredObjects] = useState(projects);
 
-  const filterProjects = useCallback(() => {
-    const query = searchQuery.toLowerCase();
-    setFilteredObjects(
-      projects.filter(
-        (proj) =>
-          proj.title.toLowerCase().includes(query) ||
-          proj.description.toLowerCase().includes(query)
-      )
-    );
+  const filterProjects = useCallback(async () => {
+    const url = `http://localhost:3441/projects?search=${searchQuery}`;
+
+    try {
+      const response = await fetch(url);
+      if (response.ok) {
+        const data = await response.json();
+        setFilteredObjects(data);
+      } else {
+        console.error('Failed to fetch projects');
+      }
+    } catch (error) {
+      console.error('Error fetching projects:', error);
+    }
   }, [searchQuery]);
 
   useEffect(() => {
