@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-import { login } from '../../actions/userActions';
+import { login } from '../../slices/userSlice';
 import InputField from '../InputField/InputField';
 import Button from '../Button/Button';
 import styles from './LoginForm.module.css';
