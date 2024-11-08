@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { unwrapResult } from '@reduxjs/toolkit';
 import { useNavigate } from 'react-router-dom';
 
-import { login } from '../../slices/userSlice';
+import { loginThunk } from '../../slices/userSlice';
 import InputField from '../InputField/InputField';
 import Button from '../Button/Button';
 import styles from './LoginForm.module.css';
@@ -15,27 +16,17 @@ function LoginForm() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    const url = 'http://localhost:3441/login';
-
     try {
-      const response = await fetch(url, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, password }),
-      });
+      const resultAction = await dispatch(loginThunk({ username, password }));
+      const result = unwrapResult(resultAction);
 
-      if (response.ok) {
-        const json = await response.json();
-        if (json.isAuthenticated) {
-          dispatch(login());
-          navigate('/');
-        }
+      if (result) {
+        navigate('/');
       } else {
         alert('Invalid credentials');
       }
-    } catch (err) {
-      console.error(err);
-      alert('Error Log In');
+    } catch (error) {
+      alert(error || 'Network error');
     }
   }
 
@@ -49,7 +40,6 @@ function LoginForm() {
         label="Password"
         onChange={(e) => setPassword(e.target.value)}
       />
-
       <Button type="submit" buttonStyle="submitButton">
         Log In
       </Button>
