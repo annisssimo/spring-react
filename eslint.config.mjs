@@ -39,4 +39,14 @@ export default [
       'jest/valid-expect': 'error',
     },
   },
+  {
+    overrides: [
+      {
+        files: ['tests/**/*'],
+        env: {
+          jest: true,
+        },
+      },
+    ],
+  },
 ];

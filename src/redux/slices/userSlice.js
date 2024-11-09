@@ -1,22 +1,14 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { authLogin } from '../../api/authApi';
 
 export const loginThunk = createAsyncThunk(
   'user/login',
   async ({ username, password }, { rejectWithValue }) => {
     try {
-      const response = await fetch('http://localhost:3441/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, password }),
-      });
-      if (response.ok) {
-        const json = await response.json();
-        return json.isAuthenticated;
-      } else {
-        return rejectWithValue('Invalid credentials');
-      }
+      const json = await authLogin({ username, password });
+      return json.isAuthenticated;
     } catch (error) {
-      return rejectWithValue('Network error');
+      return rejectWithValue(error.message);
     }
   },
 );

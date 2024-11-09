@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useAppDispatch } from '../../redux/hooks';
 import { unwrapResult } from '@reduxjs/toolkit';
 import { useNavigate } from 'react-router-dom';
 
-import { loginThunk } from '../../slices/userSlice';
+import { loginThunk } from '../../redux/slices/userSlice';
 import InputField from '../InputField/InputField';
 import Button from '../Button/Button';
 import styles from './LoginForm.module.css';
@@ -11,7 +11,7 @@ import styles from './LoginForm.module.css';
 function LoginForm() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   async function handleSubmit(e) {
