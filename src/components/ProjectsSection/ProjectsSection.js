@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
-import { fetchProjectsThunk } from '../../redux/slices/projectsSlice';
+import { fetchProjectsThunk } from '../../redux/actions/projects.action';
 import styles from './ProjectsSection.module.css';
 import ProjectCard from '../ProjectCard/ProjectCard';
 import SearchInput from '../SearchInput/SearchInput';

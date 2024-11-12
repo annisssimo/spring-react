@@ -3,7 +3,7 @@ import { useAppDispatch } from '../../redux/hooks';
 import { unwrapResult } from '@reduxjs/toolkit';
 import { useNavigate } from 'react-router-dom';
 
-import { loginThunk } from '../../redux/slices/userSlice';
+import { loginThunk } from '../../redux/actions/user.actions';
 import InputField from '../InputField/InputField';
 import Button from '../Button/Button';
 import styles from './LoginForm.module.css';

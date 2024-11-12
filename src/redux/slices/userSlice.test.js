@@ -1,5 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
-import userReducer, { loginThunk } from './userSlice';
+import userReducer from './userSlice';
+import { loginThunk } from '../actions/user.actions';
 import { authLogin } from '../../api/authApi';
 
 jest.mock('../../api/authApi');
