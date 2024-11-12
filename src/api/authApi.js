@@ -2,10 +2,13 @@ import axios from 'axios';
 
 export const authLogin = async ({ username, password }) => {
   try {
-    const response = await axios.post('http://localhost:3441/login', {
-      username,
-      password,
-    });
+    const response = await axios.post(
+      `${process.env.REACT_APP_BACKEND_URL}/login`,
+      {
+        username,
+        password,
+      },
+    );
 
     return response.data;
   } catch (error) {

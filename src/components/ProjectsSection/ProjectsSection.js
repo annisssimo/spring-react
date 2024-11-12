@@ -10,7 +10,7 @@ function ProjectsSection() {
   const [filteredObjects, setFilteredObjects] = useState(projects);
 
   const filterProjects = useCallback(async () => {
-    const url = `http://localhost:3441/projects?search=${searchQuery}`;
+    const url = `${process.env.REACT_APP_BACKEND_URL}/projects?search=${searchQuery}`;
 
     try {
       const response = await axios.get(url);
