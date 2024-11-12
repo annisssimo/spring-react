@@ -1,10 +1,19 @@
-export const authLogin = async ({ username, password }) => {
-  const response = await fetch('http://localhost:3441/login', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ username, password }),
-  });
+import axios from 'axios';
 
-  if (!response.ok) throw new Error('Invalid credentials');
-  return response.json();
+export const authLogin = async ({ username, password }) => {
+  try {
+    const response = await axios.post('http://localhost:3441/login', {
+      username,
+      password,
+    });
+
+    return response.data;
+  } catch (error) {
+    if (error.response && error.response.status === 401) {
+      throw new Error('Invalid credentials');
+    } else {
+      console.error('Error during login:', error);
+      throw new Error('An error occurred during login');
+    }
+  }
 };

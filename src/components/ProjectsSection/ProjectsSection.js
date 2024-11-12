@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
+import axios from 'axios';
 import styles from './ProjectsSection.module.css';
 import { projects } from '../../data/projects';
 import ProjectCard from '../ProjectCard/ProjectCard';
@@ -12,13 +13,8 @@ function ProjectsSection() {
     const url = `http://localhost:3441/projects?search=${searchQuery}`;
 
     try {
-      const response = await fetch(url);
-      if (response.ok) {
-        const data = await response.json();
-        setFilteredObjects(data);
-      } else {
-        console.error('Failed to fetch projects');
-      }
+      const response = await axios.get(url);
+      setFilteredObjects(response.data);
     } catch (error) {
       console.error('Error fetching projects:', error);
     }
