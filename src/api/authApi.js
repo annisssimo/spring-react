@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { errors } from '../data/errors';
 
 export const authLogin = async ({ username, password }) => {
   try {
@@ -13,10 +14,10 @@ export const authLogin = async ({ username, password }) => {
     return response.data;
   } catch (error) {
     if (error.response && error.response.status === 401) {
-      throw new Error('Invalid credentials');
+      throw new Error(errors.INVALID_CREDENTIALS);
     } else {
-      console.error('Error during login:', error);
-      throw new Error('An error occurred during login');
+      console.error(error);
+      throw new Error(errors.SERVER_ERROR || 'An error occurred during login');
     }
   }
 };
