@@ -18,15 +18,10 @@ function LoginForm() {
     e.preventDefault();
     try {
       const resultAction = await dispatch(loginThunk({ username, password }));
-      const result = unwrapResult(resultAction);
-
-      if (result) {
-        navigate('/');
-      } else {
-        alert('Invalid credentials');
-      }
+      unwrapResult(resultAction);
+      navigate('/');
     } catch (error) {
-      alert(error || 'Network error');
+      alert(error || 'Error');
     }
   }
 
