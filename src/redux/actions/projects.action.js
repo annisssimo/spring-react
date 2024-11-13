@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { fetchProjects } from '../../api/projectsApi';
-import { errors } from '../../data/errors';
+import { ERROR_MESSAGES } from '../../utils/errorMessages';
 
 export const fetchProjectsThunk = createAsyncThunk(
   'projects/fetchProjects',
@@ -10,9 +10,9 @@ export const fetchProjectsThunk = createAsyncThunk(
       return data;
     } catch (error) {
       if (error.response) {
-        return rejectWithValue(errors.SERVER_ERROR);
+        return rejectWithValue(ERROR_MESSAGES.SERVER_ERROR);
       } else {
-        return rejectWithValue(errors.NETWORK_ERROR);
+        return rejectWithValue(ERROR_MESSAGES.NETWORK_ERROR);
       }
     }
   },

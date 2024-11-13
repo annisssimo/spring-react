@@ -2,7 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import projectsReducer from './projectsSlice';
 import { fetchProjectsThunk } from '../actions/projects.action';
 import { fetchProjects } from '../../api/projectsApi';
-import { errors } from '../../data/errors';
+import { ERROR_MESSAGES } from '../../utils/errorMessages';
 
 jest.mock('../../api/projectsApi');
 
@@ -45,7 +45,7 @@ describe('fetchProjectsThunk', () => {
     expect(result.type).toBe('projects/fetchProjects/rejected');
     expect(state.data).toEqual([]);
     expect(state.loading).toBe(false);
-    expect(state.error).toBe(errors.SERVER_ERROR);
+    expect(state.error).toBe(ERROR_MESSAGES.SERVER_ERROR);
   });
 
   test('dispatches rejected action and sets NETWORK_ERROR on network error', async () => {
@@ -57,6 +57,6 @@ describe('fetchProjectsThunk', () => {
     expect(result.type).toBe('projects/fetchProjects/rejected');
     expect(state.data).toEqual([]);
     expect(state.loading).toBe(false);
-    expect(state.error).toBe(errors.NETWORK_ERROR);
+    expect(state.error).toBe(ERROR_MESSAGES.NETWORK_ERROR);
   });
 });

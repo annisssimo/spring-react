@@ -1,5 +1,6 @@
 import axios from 'axios';
-import { errors } from '../data/errors';
+import { ERROR_MESSAGES } from '../utils/errorMessages';
+import { HTTP_STATUS_CODES } from '../utils/httpStatusCodes';
 
 export const authLogin = async ({ username, password }) => {
   try {
@@ -13,11 +14,16 @@ export const authLogin = async ({ username, password }) => {
 
     return response.data;
   } catch (error) {
-    if (error.response && error.response.status === 401) {
-      throw new Error(errors.INVALID_CREDENTIALS);
+    if (
+      error.response &&
+      error.response.status === HTTP_STATUS_CODES.UNAUTHORIZED
+    ) {
+      throw new Error(ERROR_MESSAGES.INVALID_CREDENTIALS);
     } else {
       console.error(error);
-      throw new Error(errors.SERVER_ERROR || 'An error occurred during login');
+      throw new Error(
+        ERROR_MESSAGES.SERVER_ERROR || ERROR_MESSAGES.LOGIN_ERROR,
+      );
     }
   }
 };
