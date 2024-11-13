@@ -12,7 +12,7 @@ export const authLogin = async ({ username, password }) => {
       },
     );
 
-    return response.data;
+    return response.data.isAuthenticated;
   } catch (error) {
     if (
       error.response &&

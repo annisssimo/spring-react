@@ -21,7 +21,7 @@ function LoginForm() {
       unwrapResult(resultAction);
       navigate('/');
     } catch (error) {
-      alert(error || 'Error');
+      alert(error);
     }
   }
 
