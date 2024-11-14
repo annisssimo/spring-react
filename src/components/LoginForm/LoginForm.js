@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { useAppDispatch } from '../../redux/hooks';
-import { unwrapResult } from '@reduxjs/toolkit';
 import { useNavigate } from 'react-router-dom';
 
 import { loginThunk } from '../../redux/actions/user.actions';
@@ -14,15 +13,10 @@ function LoginForm() {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  async function handleSubmit(e) {
+  function handleSubmit(e) {
     e.preventDefault();
-    try {
-      const resultAction = await dispatch(loginThunk({ username, password }));
-      unwrapResult(resultAction);
-      navigate('/');
-    } catch (error) {
-      alert(error);
-    }
+    dispatch(loginThunk({ username, password }));
+    navigate('/');
   }
 
   return (

@@ -18,6 +18,7 @@ export const authLogin = async ({ username, password }) => {
       error.response &&
       error.response.status === HTTP_STATUS_CODES.UNAUTHORIZED
     ) {
+      alert(ERROR_MESSAGES.INVALID_CREDENTIALS);
       throw new Error(ERROR_MESSAGES.INVALID_CREDENTIALS);
     } else {
       console.error(error);
