@@ -1,34 +1,36 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect } from 'react';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
+import { fetchProjectsThunk } from '../../redux/actions/projects.action';
 import styles from './ProjectsSection.module.css';
-import { projects } from '../../data/projects';
 import ProjectCard from '../ProjectCard/ProjectCard';
 import SearchInput from '../SearchInput/SearchInput';
 
 function ProjectsSection() {
   const [searchQuery, setSearchQuery] = useState('');
-  const [filteredObjects, setFilteredObjects] = useState(projects);
-
-  const filterProjects = useCallback(() => {
-    const query = searchQuery.toLowerCase();
-    setFilteredObjects(
-      projects.filter(
-        (proj) =>
-          proj.title.toLowerCase().includes(query) ||
-          proj.description.toLowerCase().includes(query)
-      )
-    );
-  }, [searchQuery]);
+  const dispatch = useAppDispatch();
+  const {
+    data: filteredObjects,
+    loading,
+    error,
+  } = useAppSelector((state) => state.projects);
 
   useEffect(() => {
-    const timer = setTimeout(() => filterProjects(), 300);
+    const timer = setTimeout(() => {
+      dispatch(fetchProjectsThunk(searchQuery));
+    }, 300);
+
     return () => clearTimeout(timer);
-  }, [searchQuery, filterProjects]);
+  }, [searchQuery, dispatch]);
 
   return (
     <section className={styles.projects}>
       <SearchInput onSearch={setSearchQuery} />
       <div className={styles.projectsContainer}>
-        {filteredObjects.length === 0 && <div id="no-results">No results</div>}
+        {loading && <div>Loading...</div>}
+        {error && <div className={styles.error}>{error}</div>}
+        {filteredObjects.length === 0 && !loading && !error && (
+          <div id="no-results">No results</div>
+        )}
         {filteredObjects.map((proj) => (
           <ProjectCard key={proj.title} project={proj} />
         ))}

@@ -6,7 +6,7 @@ import {
 
 import Projects from './pages/Projects/Projects';
 import Login from './pages/Login/Login';
-import store from './store/store';
+import store from './redux/store/store';
 
 const router = createBrowserRouter([
   {

@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useAppDispatch } from '../../redux/hooks';
 import { useNavigate } from 'react-router-dom';
 
-import { login } from '../../actions/userActions';
+import { loginThunk } from '../../redux/actions/user.actions';
 import InputField from '../InputField/InputField';
 import Button from '../Button/Button';
 import styles from './LoginForm.module.css';
@@ -10,20 +10,13 @@ import styles from './LoginForm.module.css';
 function LoginForm() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   function handleSubmit(e) {
     e.preventDefault();
-    if (
-      username === process.env.REACT_APP_ADMIN_USERNAME &&
-      password === process.env.REACT_APP_ADMIN_PASSWORD
-    ) {
-      dispatch(login());
-      navigate('/');
-    } else {
-      alert('Error');
-    }
+    dispatch(loginThunk({ username, password }));
+    navigate('/');
   }
 
   return (
@@ -36,7 +29,6 @@ function LoginForm() {
         label="Password"
         onChange={(e) => setPassword(e.target.value)}
       />
-
       <Button type="submit" buttonStyle="submitButton">
         Log In
       </Button>
