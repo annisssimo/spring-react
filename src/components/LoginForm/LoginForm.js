@@ -23,10 +23,12 @@ function LoginForm() {
     <form className={styles.authFormBody} onSubmit={handleSubmit}>
       <InputField
         label="Username"
+        name="username"
         onChange={(e) => setUsername(e.target.value)}
       />
       <InputField
         label="Password"
+        name="password"
         onChange={(e) => setPassword(e.target.value)}
       />
       <Button type="submit" buttonStyle="submitButton">

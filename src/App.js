@@ -6,6 +6,7 @@ import {
 
 import Projects from './pages/Projects/Projects';
 import Login from './pages/Login/Login';
+import Signup from './pages/Signup/Signup';
 import store from './redux/store/store';
 
 const router = createBrowserRouter([
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
   {
     element: <Login />,
     path: '/login',
+  },
+  {
+    element: <Signup />,
+    path: '/signup',
   },
 ]);
 
