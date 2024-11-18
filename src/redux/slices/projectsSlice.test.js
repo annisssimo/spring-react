@@ -37,7 +37,7 @@ describe('fetchProjectsThunk', () => {
   });
 
   test('dispatches rejected action and sets SERVER_ERROR on server error', async () => {
-    fetchProjects.mockRejectedValueOnce({ response: {} });
+    fetchProjects.mockRejectedValueOnce(new Error('Server Error'));
 
     const result = await store.dispatch(fetchProjectsThunk(''));
     const state = store.getState().projects;
@@ -46,17 +46,5 @@ describe('fetchProjectsThunk', () => {
     expect(state.data).toEqual([]);
     expect(state.loading).toBe(false);
     expect(state.error).toBe(ERROR_MESSAGES.SERVER_ERROR);
-  });
-
-  test('dispatches rejected action and sets NETWORK_ERROR on network error', async () => {
-    fetchProjects.mockRejectedValueOnce(new Error('Network Error'));
-
-    const result = await store.dispatch(fetchProjectsThunk(''));
-    const state = store.getState().projects;
-
-    expect(result.type).toBe('projects/fetchProjects/rejected');
-    expect(state.data).toEqual([]);
-    expect(state.loading).toBe(false);
-    expect(state.error).toBe(ERROR_MESSAGES.NETWORK_ERROR);
   });
 });

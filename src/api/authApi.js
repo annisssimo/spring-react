@@ -15,20 +15,21 @@ export const authLogin = async ({ username, password }) => {
       error.response.status === HTTP_STATUS_CODES.UNAUTHORIZED
     ) {
       throw new Error(ERROR_MESSAGES.INVALID_CREDENTIALS);
+    } else if (
+      error.response &&
+      error.response.status === HTTP_STATUS_CODES.FORBIDDEN
+    ) {
+      throw new Error(ERROR_MESSAGES.FORBIDDEN);
     } else {
       console.error(error);
-      throw new Error(
-        ERROR_MESSAGES.SERVER_ERROR || ERROR_MESSAGES.LOGIN_ERROR,
-      );
+      throw new Error(ERROR_MESSAGES.SERVER_ERROR);
     }
   }
 };
 
 export const refreshToken = async () => {
-  try {
-    const response = await axios.post(`/token`, {});
-    return response.data;
-  } catch (error) {
-    throw new Error(error.response?.data?.message || 'Token refresh failed');
-  }
+  const response = await axios.post(`/token`, {});
+  const { accessToken } = response.data;
+  localStorage.setItem('accessToken', accessToken);
+  return accessToken;
 };

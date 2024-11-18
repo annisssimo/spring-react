@@ -10,9 +10,10 @@ export const fetchProjectsThunk = createAsyncThunk(
       return data;
     } catch (error) {
       if (error.response) {
-        return rejectWithValue(ERROR_MESSAGES.SERVER_ERROR);
+        window.location.href = '/login';
+        return rejectWithValue(ERROR_MESSAGES.FORBIDDEN);
       } else {
-        return rejectWithValue(ERROR_MESSAGES.NETWORK_ERROR);
+        return rejectWithValue(ERROR_MESSAGES.SERVER_ERROR);
       }
     }
   },

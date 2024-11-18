@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import axios from '../../api/axiosInstance';
 
 import InputField from '../InputField/InputField';
@@ -96,6 +97,10 @@ function SignupForm() {
       <Button type="submit" buttonStyle="submitButton">
         Sign Up
       </Button>
+
+      <p className={styles.linkText}>
+        Already have an account? <Link to="/login">Log in</Link>
+      </p>
     </form>
   );
 }
