@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import axios from 'axios';
+import axios from '../../api/axiosInstance';
 
 import InputField from '../InputField/InputField';
 import Button from '../Button/Button';
@@ -32,7 +32,7 @@ function SignupForm() {
         setErrors({ ...errors, repeatPassword: 'Passwords must match' });
         return;
       }
-      await axios.post(`${process.env.REACT_APP_BACKEND_URL}/signup`, data);
+      await axios.post(`/signup`, data);
       alert('Signup successful');
     } catch (error) {
       setErrors(error.response.data.errors || {});
