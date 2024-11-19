@@ -2,10 +2,8 @@ import { refreshToken } from '../api/authApi';
 
 export const ACCESS_TOKEN_KEY = 'accessToken';
 
-export const getToken = () => localStorage.getItem(ACCESS_TOKEN_KEY);
-
 export const validateToken = async () => {
-  const token = getToken();
+  const token = localStorage.getItem(ACCESS_TOKEN_KEY);
   if (!token) return false;
   try {
     const payload = JSON.parse(atob(token.split('.')[1]));

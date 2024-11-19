@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from '../../api/axiosInstance';
 
 import InputField from '../InputField/InputField';
@@ -16,6 +16,7 @@ function SignupForm() {
     age: '',
   });
   const [errors, setErrors] = useState({});
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -33,10 +34,15 @@ function SignupForm() {
         setErrors({ ...errors, repeatPassword: 'Passwords must match' });
         return;
       }
-      await axios.post(`/signup`, data);
-      alert('Signup successful');
+
+      const response = await axios.post(`/signup`, data);
+
+      const { accessToken } = response.data;
+      localStorage.setItem('accessToken', accessToken);
+
+      navigate('/');
     } catch (error) {
-      setErrors(error.response.data.errors || {});
+      setErrors(error.response?.data?.errors || {});
     }
   };
 

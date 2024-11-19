@@ -30,6 +30,11 @@ export const authLogin = async ({ username, password }) => {
 export const refreshToken = async () => {
   const response = await axios.post(`/token`, {});
   const { accessToken } = response.data;
-  localStorage.setItem('accessToken', accessToken);
-  return accessToken;
+
+  if (accessToken) {
+    localStorage.setItem('accessToken', accessToken);
+    return accessToken;
+  }
+
+  throw new Error('Error getting token');
 };
