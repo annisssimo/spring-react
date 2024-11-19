@@ -27,7 +27,6 @@ function ProjectsSection() {
       <SearchInput onSearch={setSearchQuery} />
       <div className={styles.projectsContainer}>
         {loading && <div>Loading...</div>}
-        {error && <div className={styles.error}>{error}</div>}
         {filteredObjects.length === 0 && !loading && !error && (
           <div id="no-results">No results</div>
         )}

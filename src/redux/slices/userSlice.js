@@ -5,11 +5,18 @@ const userSlice = createSlice({
   name: 'user',
   initialState: {
     isAuthenticated: false,
+    accessToken: null,
     error: null,
   },
   reducers: {
     login: (state) => {
       state.isAuthenticated = true;
+    },
+    logout: (state) => {
+      state.isAuthenticated = false;
+      state.accessToken = null;
+      state.error = null;
+      localStorage.removeItem('accessToken');
     },
   },
   extraReducers: (builder) => {
@@ -21,9 +28,14 @@ const userSlice = createSlice({
       .addCase(loginThunk.rejected, (state, action) => {
         state.isAuthenticated = false;
         state.error = action.payload;
+      })
+      .addCase(logout, (state) => {
+        state.isAuthenticated = false;
+        state.accessToken = null;
+        localStorage.removeItem('accessToken');
       });
   },
 });
 
-export const { login } = userSlice.actions;
+export const { login, logout } = userSlice.actions;
 export default userSlice.reducer;

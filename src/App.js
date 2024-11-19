@@ -6,18 +6,25 @@ import {
 
 import Projects from './pages/Projects/Projects';
 import Login from './pages/Login/Login';
-import store from './redux/store/store';
+import Signup from './pages/Signup/Signup';
+import { validateToken } from './utils/authUtils';
 
 const router = createBrowserRouter([
   {
     element: <Projects />,
     path: '/',
-    loader: () =>
-      store.getState().user.isAuthenticated ? null : redirect('/login'),
+    loader: async () => {
+      const isValid = await validateToken();
+      return isValid ? null : redirect('/login');
+    },
   },
   {
     element: <Login />,
     path: '/login',
+  },
+  {
+    element: <Signup />,
+    path: '/signup',
   },
 ]);
 

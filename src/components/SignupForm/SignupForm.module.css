@@ -15,6 +15,12 @@
   margin-bottom: 1rem;
 }
 
+.authFormBody .errorInput {
+  border: 1px solid #eb8d96;
+  border-radius: 4px;
+  margin: 4px 0;
+}
+
 .linkText {
   margin-top: 0.8rem;
   font-size: 0.8rem;

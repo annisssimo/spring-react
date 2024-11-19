@@ -1,10 +1,15 @@
 import styles from './InputField.module.css';
 
-function InputField({ label, onChange }) {
+function InputField({ label, name, onChange, className }) {
   return (
     <div className={styles.inputContainer}>
-      <label htmlFor={label}>{label}</label>
-      <input onChange={onChange} id={label} />
+      <label htmlFor={name}>{label}</label>
+      <input
+        id={name}
+        name={name}
+        onChange={onChange}
+        className={`${styles.input} ${className}`}
+      />
     </div>
   );
 }

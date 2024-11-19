@@ -4,4 +4,5 @@ export const ERROR_MESSAGES = {
   SERVER_ERROR: 'Server error. Something went wrong on our end.',
   NETWORK_ERROR: 'Network error',
   LOGIN_ERROR: 'An error occurred during login',
+  FORBIDDEN: 'Sorry. You do not have access for this resourse',
 };
